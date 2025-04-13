@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JSON Search Bar</title>
+<style>
+  #results li {
+    padding: 10px;
+    margin-bottom: 5px;
+  }
+  #create{
+    text-align: center;
+    font-size: 50px;
+  }
+  #userform{
+    
+  }
+  #name{
+    text-align: center;
+    font-size: 50px;
+  }
+  #search{
+    margin: auto;
+    margin-left: 640px;
+    padding: 10px;
+  }
+  body {
+    background-color: #cccccc;
+}
+
+</style>
+</head>
+<body>
+<header id="name">Vehicle Fuel Economy Data</header>
+<input type="text" id="search" placeholder="Search...">
+<h1 id="create">Create User</h1>
+    <form id="userForm">
+        <input type="text" id="name" placeholder="Name" required>
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <button type="submit">Create User</button>
+    </form>
+<ul id="results"></ul>
+
+<script>
+  const data = [
+    {
+      "make":"Dodge",
+        "model":"Spirit",
+        "barrels08":12.935217391304349,
+        "city08":21,
+        "highway08":26,
+        "ucity":22,
+        "uhighway":34,
+        "year":"1993",
+      },
+        {
+          "make":"Plymouth",
+          "model":"Acclaim",
+          "barrels08":14.167142857142858,
+          "city08":18,
+          "highway08":26,
+          "ucity":23,
+          "uhighway":37,
+          "year":"1993",
+        },
+        {
+          "make":"Chevrolet",
+          "model":"Caprice",
+          "barrels08":17.500588235294117,
+          "city08":15,
+          "highway08":23,
+          "ucity":18,
+          "uhighway":32,
+          "year":"1993",
+        },
+        {
+          "make":"Toyota",
+          "model":"Camry Wagon",
+          "barrels08":15.65842105263158,
+          "city08":16,
+          "highway08":22,
+          "ucity":20,
+          "uhighway":31,
+          "year":"1993",
+        },
+        {
+          "make":"Chevrolet",
+          "model":"C1500 Pickup 2WD",
+          "barrels08":19.834,
+          "city08":14,
+          "highway08":17,
+          "ucity":16.6667,
+          "uhighway":24,
+          "year":"1993",
+        },
+        {
+          "make":"Chevrolet",
+          "model":"C1500 Pickup 2WD",
+          "barrels08":21.250714285714285,
+          "city08":12,
+          "highway08":17,
+          "ucity":15,
+          "uhighway":24,
+          "year":"1993",
+        },
+        {
+          "make":"Ford",
+          "model":"Ranger Pickup 2WD",
+          "barrels08":15.65842105263158,
+          "city08":17,
+          "highway08":23,
+          "ucity":21,
+          "uhighway":32.0513,
+          "year":"1993",
+        },
+        {
+          "make":"Mazda",
+          "model":"B2200/B2600i",
+          "barrels08":15.65842105263158,
+          "city08":17,
+          "highway08":22,
+          "ucity":21.1111,
+          "uhighway":30,
+          "year":"1993",
+        },
+        {
+          "make":"Chevrolet",
+          "model":"S10 Pickup 4WD",
+          "barrels08":18.594375,
+          "city08":15,
+          "highway08":19,
+          "ucity":18.8889,
+          "uhighway":26,
+          "year":"1993",
+        },
+        {
+          "make":"Dodge",
+          "model":"Dakota Pickup 4WD",
+          "barrels08":22.885384615384616,
+          "city08":11,
+          "highway08":16,
+          "ucity":14,
+          "uhighway":22,
+          "year":"1993",
+        },
+        {
+          "make":"Ford",
+          "model":"Ranger Pickup 4WD",
+          "barrels08":16.528333333333336,
+          "city08":16,
+          "highway08":22,
+          "ucity":20,
+          "uhighway":30.7692,
+          "year":"1993",
+        },
+        {
+          "make":"GMC",
+          "model":"Sierra 1500 4WD",
+          "barrels08":22.885384615384616,
+          "city08":11,
+          "highway08":16,
+          "ucity":14,
+          "uhighway":21.7949,
+          "year":"1993",
+        },
+        {
+          "make":"Mazda",
+          "model":"B2600i 4x4",
+          "barrels08":17.500588235294117,
+          "city08":16,
+          "highway08":19,
+          "ucity":20,
+          "uhighway":26,
+          "year":"1993",
+        },
+        {
+          "make":"GMC",
+          "model":"Safari 2WD (cargo)",
+          "barrels08":17.500588235294117,
+          "city08":15,
+          "highway08":21,
+          "ucity":19,
+          "uhighway":29,
+          "year":"1993",
+        },
+        {
+          "make":"Dodge",
+          "model":"Caravan/Ram Van 2WD",
+          "barrels08":12.935217391304349,
+          "city08":21,
+          "highway08":26,
+          "ucity":26,
+          "uhighway":37,
+          "year":"1985",
+        },
+        {
+          "make":"Dodge",
+          "model":"Caravan C/V/Grand Caravan 2WD",
+          "barrels08":14.8755,
+          "city08":18,
+          "highway08":24,
+          "ucity":22,
+          "uhighway":33,
+          "year":"1993",
+        },
+        {
+          "make":"Dodge",
+          "model":"Caravan/Ram Van 2WD",
+          "barrels08":12.935217391304349,
+          "city08":21,
+          "highway08":26,
+          "ucity":26.6667,
+          "uhighway":37,
+          "year":"1985",
+        },
+        {
+          "make":"Dodge",
+          "model":"Caravan/Ram Van 2WD",
+          "barrels08":14.167142857142858,
+          "city08":18,
+          "highway08":25,
+          "ucity":23,
+          "uhighway":35,
+          "year":"1985",
+        },
+        {
+          "make":"Isuzu",
+          "model":"Amigo 2WD",
+          "barrels08":17.500588235294117,
+          "city08":15,
+          "highway08":19,
+          "ucity":19,
+          "year":"1993",
+        }
+  ];
+
+  const searchInput = document.getElementById('search');
+  const resultsList = document.getElementById('results');
+
+  searchInput.addEventListener('input', () => {
+    const searchTerm = searchInput.value.toLowerCase();
+
+    const filteredData = data.filter(item => {
+      const values = Object.values(item).map(val => val.toString().toLowerCase());
+      return values.some(value => value.includes(searchTerm));
+    });
+
+    resultsList.innerHTML = '';
+
+    if (filteredData.length > 0) {
+      filteredData.forEach(item => {
+        const listItem = document.createElement('li');
+        listItem.textContent = JSON.stringify(item);
+        resultsList.appendChild(listItem);
+      });
+    } else {
+      const listItem = document.createElement('li');
+      listItem.textContent = 'No results found.';
+      resultsList.appendChild(listItem);
+    }
+  });
+  document.getElementById('userForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const response = await fetch('http://localhost:3000/api/users', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ name, email, password })
+                });
+
+                const result = await response.json();
+                if (response.ok) {
+                    alert('User created successfully!');
+                } else {
+                    alert('Error: ' + result.message);
+                }
+            } catch (error) {
+                alert('Network Error');
+            }
+        });
+</script>
+
+</body>
+</html>
